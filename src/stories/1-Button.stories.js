@@ -1,18 +1,15 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { Button } from '@storybook/react/demo';
+import Button from '../ui/atoms/Button';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Button',
   component: Button,
+  decorators: [withKnobs],
 };
 
-export const Text = () => <Button onClick={action('clicked')}>Hello Button</Button>;
+export const Primary = () => <Button type="primaryButton" text={text("Label", "Primary Button")} />;
 
-export const Emoji = () => (
-  <Button onClick={action('clicked')}>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-  </Button>
-);
+export const Secondary = () => <Button type="secondaryButton" text={text("Label", "Secondary Button")} />;
+
+export const Rare = () => <Button type="rareButton" icon={select('icon', ['esport', 'star'])} />;
